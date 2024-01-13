@@ -10,24 +10,11 @@ import java.util.Map;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
-
 public class BukuAddFrame extends javax.swing.JFrame {
-    
-    private DatePicker datePicker;
     
     HashMap<String, Integer> pengarangMap = new HashMap<>();
     HashMap<String, Integer> penerbitMap = new HashMap<>();
     HashMap<String, Integer> rakMap = new HashMap<>();
-    
-    private void initDatePicker() {
-        DatePickerSettings settings = new DatePickerSettings();
-        settings.setFormatForDatesCommonEra("yyyy-MM-dd");
-        
-        datePicker = new DatePicker(settings);
-        datePicker.setDateToToday();
-        
-//        tahunTerbit.add(datePicker);
-    }
     
     public void PengarangComboBox() {
         try {
@@ -127,7 +114,6 @@ public class BukuAddFrame extends javax.swing.JFrame {
     
     public BukuAddFrame(int id) {
     initComponents();
-    initDatePicker();
     FillComboBox();
         try {
         Connection koneksi = Database.getConnection();
@@ -353,7 +339,7 @@ public class BukuAddFrame extends javax.swing.JFrame {
                 Connection koneksi = Database.getConnection();
                 String insertSQL = "INSERT INTO buku (judul, tahun_terbit, jumlah, idbn, pengarang_id, penerbit_id, rak_id) VALUES ('"
                 + judulTextField.getText() + "', '"
-                + tahunTerbit.getText() + "', '"
+                + tahunTerbit.getDate() + "', '"
                 + jumlahTextField.getText() + "', '"
                 + idbnTextField.getText() + "', '"
                 + pengarangTextField.getText() + "', '"
@@ -371,7 +357,7 @@ public class BukuAddFrame extends javax.swing.JFrame {
                 Connection koneksi = Database.getConnection();
                 String updateSQL = "UPDATE buku SET judul = '" +
                 judulTextField.getText() + "', tahun_terbit = '"+
-                tahunTerbit.getText() + "', jumlah = '"+
+                tahunTerbit.getDate() + "', jumlah = '"+
                 jumlahTextField.getText() + "', idbn = '"+
                 idbnTextField.getText() + "', pengarang_id = '"+
                 pengarangTextField.getText() + "', penerbit_id = '"+

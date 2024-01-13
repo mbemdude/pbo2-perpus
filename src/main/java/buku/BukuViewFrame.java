@@ -242,7 +242,7 @@ public class BukuViewFrame extends javax.swing.JFrame {
                     TableModel model = viewTable.getModel();
                     int id = (int) model.getValueAt(barisTerpilih, 0);
                     Connection koneksi = Database.getConnection();
-                    String deleteSQL = "DELETE FROM penerbit WHERE id ="+id;
+                    String deleteSQL = "DELETE FROM buku WHERE id ="+id;
                     Statement statement = koneksi.createStatement();
                     statement.executeUpdate(deleteSQL);
                     koneksi.close();
