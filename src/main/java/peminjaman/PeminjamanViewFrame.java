@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package penerbit;
+package peminjaman;
 
 import db.Database;
 import java.sql.Connection;
@@ -17,12 +17,12 @@ import javax.swing.table.TableModel;
  *
  * @author mbemd
  */
-public class PenerbitViewFrame extends javax.swing.JFrame {
+public class PeminjamanViewFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form PenerbitViewFrame
+     * Creates new form PeminjamanViewForm
      */
-    public PenerbitViewFrame() {
+    public PeminjamanViewFrame() {
         initComponents();
     }
 
@@ -55,7 +55,7 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Daftar Penerbit");
+        jLabel1.setText("Daftar Peminjam");
 
         jLabel2.setText("Cari Data");
 
@@ -74,7 +74,7 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nama", "No Telp", "Alamat", "Email"
+                "Id", "Tanggal Pinjam", "Tanggal Kembali", "Nama Petugas", "Nama Peminjam"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -131,40 +131,37 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(196, 196, 196))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cariButton)
+                .addGap(100, 100, 100))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cariButton))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(32, 32, 32)
-                                        .addComponent(jLabel1)))
-                                .addGap(92, 92, 92))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(tutupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(40, 40, 40)
+                        .addComponent(tutupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tambahButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(139, 139, 139))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,17 +175,17 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
                     .addComponent(cariButton))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton)
                     .addComponent(tambahButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resetButton)
-                    .addComponent(hapusButton))
+                    .addComponent(hapusButton)
+                    .addComponent(resetButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tutupButton)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,7 +195,9 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
         try {
             String kataKunci = cariTextField.getText();
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT * FROM penerbit WHERE nama LIKE '%"+kataKunci+"%' ";
+            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tanggal_kembali, PT.nama, A.nama"
+            + " FROM peminjaman PM LEFT JOIN petugas PT ON PM.petugas_id=PT.id"
+            + " LEFT JOIN anggota A ON PM.anggota_id=A.id WHERE tanggal_pinjam LIKE '%"+kataKunci+"%' ";
             Statement statement = koneksi.createStatement();
             ResultSet resultSet = statement.executeQuery(selectSQL);
 
@@ -207,11 +206,11 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
             model.setRowCount(0);
 
             while(resultSet.next()) {
-                row[0] = resultSet.getInt("id");
-                row[1] = resultSet.getString("nama");
-                row[2] = resultSet.getString("telp");
-                row[3] = resultSet.getString("alamat");
-                row[4] = resultSet.getString("email");
+                row[0] = resultSet.getInt("PM.id");
+                row[1] = resultSet.getString("PM.tanggal_pinjam");
+                row[2] = resultSet.getString("PM.tanggal_kembali");
+                row[3] = resultSet.getString("PT.nama");
+                row[4] = resultSet.getString("A.nama");
                 model.addRow(row);
             }
             koneksi.close();
@@ -221,7 +220,7 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cariButtonActionPerformed
 
     private void tambahButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahButtonActionPerformed
-        PenerbitAddFrame f = new PenerbitAddFrame();
+        PeminjamanAddFrame f = new PeminjamanAddFrame();
         f.setVisible(true);
     }//GEN-LAST:event_tambahButtonActionPerformed
 
@@ -230,7 +229,7 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
         if(barisTerpilih >= 0) {
             TableModel model = viewTable.getModel();
             int id = (int) model.getValueAt(barisTerpilih, 0);
-            PenerbitAddFrame f = new PenerbitAddFrame(id);
+            PeminjamanAddFrame f = new PeminjamanAddFrame(id);
             f.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Pilih data");
@@ -253,7 +252,7 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
                     TableModel model = viewTable.getModel();
                     int id = (int) model.getValueAt(barisTerpilih, 0);
                     Connection koneksi = Database.getConnection();
-                    String deleteSQL = "DELETE FROM penerbit WHERE id ="+id;
+                    String deleteSQL = "DELETE FROM peminjaman WHERE id ="+id;
                     Statement statement = koneksi.createStatement();
                     statement.executeUpdate(deleteSQL);
                     koneksi.close();
@@ -274,20 +273,22 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         try{
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT * FROM penerbit";
+            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tanggal_kembali, PT.nama, A.nama"
+                                + " FROM peminjaman PM LEFT JOIN petugas PT ON PM.petugas_id=PT.id"
+                                + " LEFT JOIN anggota A ON PM.anggota_id=A.id";
             Statement statement = koneksi.createStatement();
             ResultSet resultSet = statement.executeQuery(selectSQL);
             
-            Object[] row = new Object[5];
+            Object[] row = new Object[8];
             DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
             model.setRowCount(0);
             
             while(resultSet.next()) {
-                row[0] = resultSet.getInt("id");
-                row[1] = resultSet.getString("nama");
-                row[2] = resultSet.getString("telp");
-                row[3] = resultSet.getString("alamat");
-                row[4] = resultSet.getString("email");
+                row[0] = resultSet.getInt("PM.id");
+                row[1] = resultSet.getString("PM.tanggal_pinjam");
+                row[2] = resultSet.getString("PM.tanggal_kembali");
+                row[3] = resultSet.getString("PT.nama");
+                row[4] = resultSet.getString("A.nama");
                 model.addRow(row);
             }
             koneksi.close();
@@ -313,20 +314,21 @@ public class PenerbitViewFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PenerbitViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeminjamanViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PenerbitViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeminjamanViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PenerbitViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeminjamanViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PenerbitViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeminjamanViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PenerbitViewFrame().setVisible(true);
+                new PeminjamanViewFrame().setVisible(true);
             }
         });
     }

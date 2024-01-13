@@ -18,9 +18,9 @@ public class BukuAddFrame extends javax.swing.JFrame {
     
     public void PengarangComboBox() {
         try {
-            Connection koneksi = Database.getConnection();  // Sesuaikan ini dengan metode koneksi database Anda
+            Connection koneksi = Database.getConnection();
 
-            String sqlPengarang = "SELECT nama, id FROM pengarang"; // Sesuaikan nama kolom sesuai tabel Anda
+            String sqlPengarang = "SELECT nama, id FROM pengarang";
             Statement stPengarang = koneksi.createStatement();
             ResultSet rsPengarang = stPengarang.executeQuery(sqlPengarang);
 
@@ -40,9 +40,9 @@ public class BukuAddFrame extends javax.swing.JFrame {
     
     public void PenerbitComboBox() {
         try {
-            Connection koneksi = Database.getConnection();  // Sesuaikan ini dengan metode koneksi database Anda
+            Connection koneksi = Database.getConnection();
 
-            String sqlPenerbit = "SELECT nama, id FROM penerbit"; // Sesuaikan nama kolom sesuai tabel Anda
+            String sqlPenerbit = "SELECT nama, id FROM penerbit";
             Statement stPenerbit = koneksi.createStatement();
             ResultSet rsPenerbit = stPenerbit.executeQuery(sqlPenerbit);
 
@@ -62,7 +62,7 @@ public class BukuAddFrame extends javax.swing.JFrame {
     
     public void RakComboBox() {
         try {
-            Connection koneksi = Database.getConnection();  // Sesuaikan ini dengan metode koneksi database Anda
+            Connection koneksi = Database.getConnection();
 
             String sqlRak = "SELECT kd_rak, id FROM rak"; // Sesuaikan nama kolom sesuai tabel Anda
             Statement stRak = koneksi.createStatement();
@@ -243,24 +243,28 @@ public class BukuAddFrame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(37, 37, 37)
+                        .addGap(37, 37, 37))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(idTextField)
                             .addComponent(judulTextField)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(batalButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(simpanButton))
-                            .addComponent(jumlahTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(idbnTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(jumlahTextField)
+                            .addComponent(idbnTextField)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(pengarangComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,12 +276,13 @@ public class BukuAddFrame extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(rakTextField, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(penerbitTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)))
+                                    .addComponent(penerbitTextField, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(tahunTerbit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(367, 367, 367))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(398, 398, 398))))
+                        .addContainerGap(12, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +328,7 @@ public class BukuAddFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(batalButton)
                     .addComponent(simpanButton))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
