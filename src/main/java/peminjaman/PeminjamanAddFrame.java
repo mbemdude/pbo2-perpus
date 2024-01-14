@@ -71,50 +71,50 @@ public class PeminjamanAddFrame extends javax.swing.JFrame {
         
         anggotaComboBox.removeAllItems();
         AnggotaComboBox();
-    
-        for (Map.Entry<String, Integer> entry : petugasMap.entrySet()) {
-            String namaPengarang = entry.getKey();
-            petugasComboBox.addItem(namaPengarang);
-        }
     }
     
     public PeminjamanAddFrame() {
         initComponents();
-        
-        petugasComboBox.removeAllItems();
-        PetugasComboBox();
-        
-        anggotaComboBox.removeAllItems();
-        AnggotaComboBox();
+        FillComboBox();
+    }
+    
+    private static <K, V> K getKeyFromValue(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
     
     public PeminjamanAddFrame(int id) {
-    initComponents();
-    FillComboBox();
+        initComponents();
+        FillComboBox();
         try {
-        Connection koneksi = Database.getConnection();
-        String findSQL = "SELECT * FROM peminjaman WHERE id="+id;
-        Statement statement = koneksi.createStatement();
-        ResultSet resultSet = statement.executeQuery(findSQL);
-        while(resultSet.next()){
-            idTextField.setText(resultSet.getString("id"));
-            tanggalPinjamDatePicker.setText(resultSet.getString("tanggal_pinjam"));
-            tanggalKembaliDatePicker.setText(resultSet.getString("tenggat_pengembalian"));
-            
-            String selectedPetugas = String.valueOf(resultSet.getInt("petugas_id"));
-            String selectedAnggota = String.valueOf(resultSet.getInt("anggota_id"));
-            
-            petugasComboBox.setSelectedItem(selectedPetugas);
-            petugasTextField.setText(resultSet.getString("petugas_id"));
-            
-            anggotaComboBox.setSelectedItem(selectedAnggota); 
-            anggotaTextField.setText(resultSet.getString("anggota_id"));
-        }
+            Connection koneksi = Database.getConnection();
+            String findSQL = "SELECT * FROM peminjaman WHERE id=" + id;
+            Statement statement = koneksi.createStatement();
+            ResultSet resultSet = statement.executeQuery(findSQL);
+            while (resultSet.next()) {
+                idTextField.setText(resultSet.getString("id"));
+                tanggalPinjamDatePicker.setText(resultSet.getString("tanggal_pinjam"));
+                tanggalKembaliDatePicker.setText(resultSet.getString("tenggat_pengembalian"));
+
+                int selectedPetugas = resultSet.getInt("petugas_id");
+                int selectedAnggota = resultSet.getInt("anggota_id"); // Ubah nama kolom sesuai tabel Anda
+
+                petugasComboBox.setSelectedItem(getKeyFromValue(petugasMap, selectedPetugas));
+                petugasTextField.setText(String.valueOf(selectedPetugas));
+
+                anggotaComboBox.setSelectedItem(getKeyFromValue(anggotaMap, selectedAnggota));
+                anggotaTextField.setText(String.valueOf(selectedAnggota));
+            }
             koneksi.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

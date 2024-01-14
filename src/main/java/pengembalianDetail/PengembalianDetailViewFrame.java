@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package peminjaman_detail;
+package pengembalianDetail;
 
 import db.Database;
 import java.sql.Connection;
@@ -17,12 +17,12 @@ import javax.swing.table.TableModel;
  *
  * @author mbemd
  */
-public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
+public class PengembalianDetailViewFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form PeminjamanDetailViewFrame
+     * Creates new form PengembalianDetailViewFrame
      */
-    public PeminjamanDetailViewFrame() {
+    public PengembalianDetailViewFrame() {
         initComponents();
     }
 
@@ -55,7 +55,7 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Peminjaman Detail");
+        jLabel1.setText("Pengembalian Detail");
 
         jLabel2.setText("Cari Data");
 
@@ -68,17 +68,17 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
 
         viewTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id", "Tanggal Pinjam", "Tanggal Kembali", "Nama Petugas", "Nama Peminjam", "Judul Buku"
+                "Id", "Tanggal Pinjam", "Tenggat Peminjaman", "Tanggal Pengembalian", "Denda", "Petugas Peminjaman", "Petugas Pengembalian", "Nama Peminjam", "Judul Buku"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -131,37 +131,41 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cariButton)
-                .addGap(100, 100, 100))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(tutupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tambahButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(139, 139, 139))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(191, 191, 191))
+                        .addGap(0, 221, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cariTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cariButton))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(91, 91, 91)))
+                                .addGap(198, 198, 198))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(40, 40, 40)
+                                        .addComponent(tutupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tambahButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(editButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(resetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(244, 244, 244))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,23 +199,27 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
         try {
             String kataKunci = cariTextField.getText();
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT PNJD.id, PNJ.tanggal_pinjam, PNJ.tenggat_pengembalian, PT.nama, A.nama, B.judul FROM peminjaman_detail PNJD " 
-                    + "LEFT JOIN peminjaman PNJ ON PNJD.peminjaman_id=PNJ.id LEFT JOIN petugas PT ON PNJ.petugas_id=PT.id LEFT JOIN anggota A " 
-                    + "ON PNJ.anggota_id=A.id LEFT JOIN buku B ON PNJD.buku_id=B.id WHERE A.nama OR B.judul LIKE '%"+kataKunci+"%' ";
+            String selectSQL = "SELECT PNBD.id, PNJ.tanggal_pinjam, PNJ.tenggat_pengembalian, PNB.tanggal_pengembalian, PNB.denda, PTB.nama AS petugas_pengembalian, "
+                    + "PT_peminjam.nama AS petugas_peminjam, A.nama, B.judul FROM pengembalian_detail PNBD LEFT JOIN pengembalian PNB ON PNBD.pengembalian_id = PNB.id "
+                    + "LEFT JOIN peminjaman PNJ ON PNB.peminjaman_id = PNJ.id LEFT JOIN petugas PTB ON PNB.petugas_id = PTB.id LEFT JOIN anggota A ON PNJ.anggota_id = A.id "
+                    + "LEFT JOIN petugas PT_peminjam ON PNJ.petugas_id = PT_peminjam.id LEFT JOIN buku B ON PNBD.buku_id = B.id WHERE A.nama OR B.judul LIKE '%"+kataKunci+"%' ";
             Statement statement = koneksi.createStatement();
             ResultSet resultSet = statement.executeQuery(selectSQL);
 
-            Object[] row = new Object[6];
+            Object[] row = new Object[9];
             DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
             model.setRowCount(0);
 
             while(resultSet.next()) {
-                row[0] = resultSet.getInt("PNJD.id");
+                row[0] = resultSet.getInt("PNBD.id");
                 row[1] = resultSet.getString("PNJ.tanggal_pinjam");
                 row[2] = resultSet.getString("PNJ.tenggat_pengembalian");
-                row[3] = resultSet.getString("PT.nama");
-                row[4] = resultSet.getString("A.nama");
-                row[5] = resultSet.getString("B.judul");
+                row[3] = resultSet.getString("PNB.tanggal_pengembalian");
+                row[4] = resultSet.getString("PNB.denda");
+                row[5] = resultSet.getString("petugas_pengembalian");
+                row[6] = resultSet.getString("petugas_peminjam");
+                row[7] = resultSet.getString("A.nama");
+                row[8] = resultSet.getString("B.judul");
                 model.addRow(row);
             }
             koneksi.close();
@@ -221,7 +229,7 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cariButtonActionPerformed
 
     private void tambahButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambahButtonActionPerformed
-        PeminjamanDetailAddFrame f = new PeminjamanDetailAddFrame();
+        PengembalianDetailAddFrame f = new PengembalianDetailAddFrame();
         f.setVisible(true);
     }//GEN-LAST:event_tambahButtonActionPerformed
 
@@ -230,7 +238,7 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
         if(barisTerpilih >= 0) {
             TableModel model = viewTable.getModel();
             int id = (int) model.getValueAt(barisTerpilih, 0);
-            PeminjamanDetailAddFrame f = new PeminjamanDetailAddFrame(id);
+            PengembalianDetailAddFrame f = new PengembalianDetailAddFrame(id);
             f.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Pilih data");
@@ -274,23 +282,27 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         try{
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT PNJD.id, PNJ.tanggal_pinjam, PNJ.tenggat_pengembalian, PT.nama, A.nama, B.judul FROM peminjaman_detail PNJD " 
-                    + "LEFT JOIN peminjaman PNJ ON PNJD.peminjaman_id=PNJ.id LEFT JOIN petugas PT ON PNJ.petugas_id=PT.id LEFT JOIN anggota A " 
-                    + "ON PNJ.anggota_id=A.id LEFT JOIN buku B ON PNJD.buku_id=B.id";
+            String selectSQL = "SELECT PNBD.id, PNJ.tanggal_pinjam, PNJ.tenggat_pengembalian, PNB.tanggal_pengembalian, PNB.denda, PTB.nama AS petugas_pengembalian, "
+                    + "PT_peminjam.nama AS petugas_peminjam, A.nama, B.judul FROM pengembalian_detail PNBD LEFT JOIN pengembalian PNB ON PNBD.pengembalian_id = PNB.id "
+                    + "LEFT JOIN peminjaman PNJ ON PNB.peminjaman_id = PNJ.id LEFT JOIN petugas PTB ON PNB.petugas_id = PTB.id LEFT JOIN anggota A ON PNJ.anggota_id = A.id "
+                    + "LEFT JOIN petugas PT_peminjam ON PNJ.petugas_id = PT_peminjam.id LEFT JOIN buku B ON PNBD.buku_id = B.id";
             Statement statement = koneksi.createStatement();
             ResultSet resultSet = statement.executeQuery(selectSQL);
             
-            Object[] row = new Object[6];
+            Object[] row = new Object[9];
             DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
             model.setRowCount(0);
             
             while(resultSet.next()) {
-                row[0] = resultSet.getInt("PNJD.id");
+                row[0] = resultSet.getInt("PNBD.id");
                 row[1] = resultSet.getString("PNJ.tanggal_pinjam");
                 row[2] = resultSet.getString("PNJ.tenggat_pengembalian");
-                row[3] = resultSet.getString("PT.nama");
-                row[4] = resultSet.getString("A.nama");
-                row[5] = resultSet.getString("B.judul");
+                row[3] = resultSet.getString("PNB.tanggal_pengembalian");
+                row[4] = resultSet.getString("PNB.denda");
+                row[5] = resultSet.getString("petugas_pengembalian");
+                row[6] = resultSet.getString("petugas_peminjam");
+                row[7] = resultSet.getString("A.nama");
+                row[8] = resultSet.getString("B.judul");
                 model.addRow(row);
             }
             koneksi.close();
@@ -316,20 +328,20 @@ public class PeminjamanDetailViewFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PengembalianDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PengembalianDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PengembalianDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeminjamanDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PengembalianDetailViewFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PeminjamanDetailViewFrame().setVisible(true);
+                new PengembalianDetailViewFrame().setVisible(true);
             }
         });
     }

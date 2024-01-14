@@ -50,7 +50,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="tanggalPinjamTextField" min="-2" pref="71" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tanggalPinjamDatePicker" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tanggalPengembalianDatePicker" alignment="0" max="32767" attributes="0"/>
                           <Component id="dendaTextField" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -84,7 +84,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tanggalPinjamDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tanggalPengembalianDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -187,7 +187,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tanggalPinjamTextField">
     </Component>
-    <Component class="com.github.lgooddatepicker.components.DatePicker" name="tanggalPinjamDatePicker">
+    <Component class="com.github.lgooddatepicker.components.DatePicker" name="tanggalPengembalianDatePicker">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

@@ -10,8 +10,7 @@ import java.util.Map;
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 
-public class BukuAddFrame extends javax.swing.JFrame {
-    
+public class BukuAddFrame extends javax.swing.JFrame {   
     HashMap<String, Integer> pengarangMap = new HashMap<>();
     HashMap<String, Integer> penerbitMap = new HashMap<>();
     HashMap<String, Integer> rakMap = new HashMap<>();
@@ -91,31 +90,28 @@ public class BukuAddFrame extends javax.swing.JFrame {
         
         rakComboBox.removeAllItems();
         RakComboBox();
-        
-        for (Map.Entry<String, Integer> entry : pengarangMap.entrySet()) {
-            String namaPengarang = entry.getKey();
-            pengarangComboBox.addItem(namaPengarang);
-        }
     }
     
         
     public BukuAddFrame() {
         initComponents();
-        pengarangComboBox.removeAllItems();
-        PengarangComboBox();
-        
-        penerbitComboBox.removeAllItems();
-        PenerbitComboBox();
-        
-        rakComboBox.removeAllItems();
-        RakComboBox();
+        FillComboBox();
+    }
+    
+    private static <K, V> K getKeyFromValue(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
     
     
-    public BukuAddFrame(int id) {
+public BukuAddFrame(int id) {
     initComponents();
     FillComboBox();
-        try {
+    try {
         Connection koneksi = Database.getConnection();
         String findSQL = "SELECT * FROM buku WHERE id="+id;
         Statement statement = koneksi.createStatement();
@@ -126,26 +122,26 @@ public class BukuAddFrame extends javax.swing.JFrame {
             tahunTerbit.setText(resultSet.getString("tahun_terbit"));
             jumlahTextField.setText(resultSet.getString("jumlah"));
             idbnTextField.setText(resultSet.getString("idbn"));
-            
-            String selectedPengarang = String.valueOf(resultSet.getInt("pengarang_id"));
-            String selectedPenerbit = resultSet.getString("penerbit_id");
-            String selectedRak = resultSet.getString("rak_id");
-            
-            pengarangComboBox.setSelectedItem(selectedPengarang);
-            pengarangTextField.setText(resultSet.getString("pengarang_id"));
-            
-            penerbitComboBox.setSelectedItem(selectedPenerbit); 
-            penerbitTextField.setText(resultSet.getString("penerbit_id"));
-            
-            rakComboBox.setSelectedItem(selectedRak);
-            rakTextField.setText(resultSet.getString("rak_id"));
-            
+
+            int selectedPengarang = resultSet.getInt("pengarang_id");
+            int selectedPenerbit = resultSet.getInt("penerbit_id");
+            int selectedRak = resultSet.getInt("rak_id");
+
+            pengarangComboBox.setSelectedItem(getKeyFromValue(pengarangMap, selectedPengarang));
+            pengarangTextField.setText(String.valueOf(selectedPengarang));
+
+            penerbitComboBox.setSelectedItem(getKeyFromValue(penerbitMap, selectedPenerbit));
+            penerbitTextField.setText(String.valueOf(selectedPenerbit));
+
+            rakComboBox.setSelectedItem(getKeyFromValue(rakMap, selectedRak));
+            rakTextField.setText(String.valueOf(selectedRak));
         }
-            koneksi.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
+        koneksi.close();
+    } catch (SQLException ex) {
+        System.err.println(ex.getMessage());
     }
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.

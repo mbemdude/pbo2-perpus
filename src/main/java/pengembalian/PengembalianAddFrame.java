@@ -81,41 +81,46 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
     
     public PengembalianAddFrame() {
         initComponents();
-        
-        petugasComboBox.removeAllItems();
-        PetugasComboBox();
-        
-        tanggalPinjamComboBox.removeAllItems();
-        PeminjamanComboBox();
+        FillComboBox();
+    }
+    
+    private static <K, V> K getKeyFromValue(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
     
     public PengembalianAddFrame(int id) {
-    initComponents();
-    FillComboBox();
+        initComponents();
+        FillComboBox();
         try {
-        Connection koneksi = Database.getConnection();
-        String findSQL = "SELECT * FROM pengembalian WHERE id="+id;
-        Statement statement = koneksi.createStatement();
-        ResultSet resultSet = statement.executeQuery(findSQL);
-        while(resultSet.next()){
-            idTextField.setText(resultSet.getString("id"));
-            tanggalPinjamDatePicker.setText(resultSet.getString("tanggal_pinjam"));
-            dendaTextField.setText(resultSet.getString("denda"));
-            
-            String selectedPetugas = String.valueOf(resultSet.getInt("petugas_id"));
-            String selectedTanggalPinjam = String.valueOf(resultSet.getInt("peminjaman_id"));
-            
-            petugasComboBox.setSelectedItem(selectedPetugas);
-            petugasTextField.setText(resultSet.getString("petugas_id"));
-            
-            tanggalPinjamComboBox.setSelectedItem(selectedTanggalPinjam); 
-            tanggalPinjamTextField.setText(resultSet.getString("peminjaman_id"));
-        }
+            Connection koneksi = Database.getConnection();
+            String findSQL = "SELECT * FROM pengembalian WHERE id=" + id;
+            Statement statement = koneksi.createStatement();
+            ResultSet resultSet = statement.executeQuery(findSQL);
+            while (resultSet.next()) {
+                idTextField.setText(resultSet.getString("id"));
+                tanggalPengembalianDatePicker.setText(resultSet.getString("tanggal_pengembalian"));
+                dendaTextField.setText(resultSet.getString("denda"));
+
+                int selectedPetugas = resultSet.getInt("petugas_id");
+                int selectedPeminjaman = resultSet.getInt("peminjaman_id");
+
+                petugasComboBox.setSelectedItem(getKeyFromValue(petugasMap, selectedPetugas));
+                petugasTextField.setText(String.valueOf(selectedPetugas));
+
+                tanggalPinjamComboBox.setSelectedItem(String.valueOf(selectedPeminjaman));
+                tanggalPinjamTextField.setText(String.valueOf(selectedPeminjaman));
+            }
             koneksi.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,7 +142,7 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
         petugasTextField = new javax.swing.JTextField();
         tanggalPinjamComboBox = new javax.swing.JComboBox<>();
         tanggalPinjamTextField = new javax.swing.JTextField();
-        tanggalPinjamDatePicker = new com.github.lgooddatepicker.components.DatePicker();
+        tanggalPengembalianDatePicker = new com.github.lgooddatepicker.components.DatePicker();
         jLabel4 = new javax.swing.JLabel();
         dendaTextField = new javax.swing.JTextField();
 
@@ -209,7 +214,7 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
                                 .addComponent(tanggalPinjamComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tanggalPinjamTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tanggalPinjamDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tanggalPengembalianDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dendaTextField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
@@ -235,7 +240,7 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tanggalPinjamDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tanggalPengembalianDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -269,7 +274,7 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
             try{
                 Connection koneksi = Database.getConnection();
                 String insertSQL = "INSERT INTO pengembalian (tanggal_pengembalian, denda, petugas_id, peminjaman_id) VALUES ('"
-                + tanggalPinjamDatePicker.getDate() + "', '"
+                + tanggalPengembalianDatePicker.getDate() + "', '"
                 + dendaTextField.getText() + "', '"
                 + petugasTextField.getText() + "', '"
                 + tanggalPinjamTextField.getText() + "')";
@@ -284,7 +289,7 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
             try {
                 Connection koneksi = Database.getConnection();
                 String updateSQL = "UPDATE peminjaman SET tanggal_pengembalian = '" +
-                tanggalPinjamDatePicker.getDate() + "', denda = '"+
+                tanggalPengembalianDatePicker.getDate() + "', denda = '"+
                 dendaTextField.getText() + "', petugas_id = '"+
                 petugasTextField.getText() + "', peminjaman_id = '"+
                 tanggalPinjamTextField.getText() + "' WHERE id = " +
@@ -357,8 +362,8 @@ public class PengembalianAddFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> petugasComboBox;
     private javax.swing.JTextField petugasTextField;
     private javax.swing.JButton simpanButton;
+    private com.github.lgooddatepicker.components.DatePicker tanggalPengembalianDatePicker;
     private javax.swing.JComboBox<String> tanggalPinjamComboBox;
-    private com.github.lgooddatepicker.components.DatePicker tanggalPinjamDatePicker;
     private javax.swing.JTextField tanggalPinjamTextField;
     // End of variables declaration//GEN-END:variables
 }

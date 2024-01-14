@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package peminjaman_detail;
+package peminjamanDetail;
 
 import db.Database;
 import java.sql.Connection;
@@ -78,25 +78,35 @@ public class PeminjamanDetailAddFrame extends javax.swing.JFrame {
         FillComboBox();
     }
     
-    public PeminjamanDetailAddFrame(int id) {
-    initComponents();
-    FillComboBox();
-        try {
-        Connection koneksi = Database.getConnection();
-        String findSQL = "SELECT * FROM peminjaman_detail WHERE id="+id;
-        Statement statement = koneksi.createStatement();
-        ResultSet resultSet = statement.executeQuery(findSQL);
-        while(resultSet.next()){
-            idTextField.setText(resultSet.getString("id"));
-            String selectedTanggalPinjam = String.valueOf(resultSet.getInt("peminjaman_id"));
-            String selectedBuku = String.valueOf(resultSet.getInt("buku_id"));
-            
-            tanggalPinjamComboBox.setSelectedItem(selectedTanggalPinjam); 
-            tanggalPinjamTextField.setText(resultSet.getString("peminjaman_id"));
-            
-            bukuComboBox.setSelectedItem(selectedBuku); 
-            bukuTextField.setText(resultSet.getString("buku_id"));
+    private static <K, V> K getKeyFromValue(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
         }
+        return null;
+    }
+    
+    public PeminjamanDetailAddFrame(int id) {
+        initComponents();
+        FillComboBox();
+        try {
+            Connection koneksi = Database.getConnection();
+            String findSQL = "SELECT * FROM peminjaman_detail WHERE id=" + id;
+            Statement statement = koneksi.createStatement();
+            ResultSet resultSet = statement.executeQuery(findSQL);
+            while (resultSet.next()) {
+                idTextField.setText(resultSet.getString("id"));
+
+                int selectedPeminjaman = resultSet.getInt("peminjaman_id");
+                int selectedBuku = resultSet.getInt("buku_id");
+
+                tanggalPinjamComboBox.setSelectedItem(String.valueOf(selectedPeminjaman));
+                tanggalPinjamTextField.setText(String.valueOf(selectedPeminjaman));
+
+                bukuComboBox.setSelectedItem(String.valueOf(selectedBuku));
+                bukuTextField.setText(String.valueOf(selectedBuku));
+            }
             koneksi.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
