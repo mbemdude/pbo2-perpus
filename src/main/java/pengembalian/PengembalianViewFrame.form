@@ -55,13 +55,13 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tambahButton" max="32767" attributes="0"/>
-                          <Component id="hapusButton" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="tambahButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="hapusButton" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="editButton" max="32767" attributes="0"/>
-                          <Component id="resetButton" min="-2" pref="120" max="-2" attributes="0"/>
+                          <Component id="editButton" alignment="0" max="32767" attributes="0"/>
+                          <Component id="resetButton" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -105,7 +105,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Daftar Peminjam"/>
+        <Property name="text" type="java.lang.String" value="Daftar Pengembalian"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -135,8 +135,8 @@
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
                 <Column editable="true" title="Id" type="java.lang.Object"/>
-                <Column editable="false" title="Tanggal Pinjam" type="java.lang.Object"/>
                 <Column editable="false" title="Tanggal Kembali" type="java.lang.Object"/>
+                <Column editable="false" title="Denda" type="java.lang.Object"/>
                 <Column editable="false" title="Nama Petugas" type="java.lang.Object"/>
                 <Column editable="false" title="Nama Peminjam" type="java.lang.Object"/>
               </Table>

@@ -195,7 +195,7 @@ public class PeminjamanViewFrame extends javax.swing.JFrame {
         try {
             String kataKunci = cariTextField.getText();
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tanggal_kembali, PT.nama, A.nama"
+            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tenggat_pengembalian, PT.nama, A.nama"
             + " FROM peminjaman PM LEFT JOIN petugas PT ON PM.petugas_id=PT.id"
             + " LEFT JOIN anggota A ON PM.anggota_id=A.id WHERE tanggal_pinjam LIKE '%"+kataKunci+"%' ";
             Statement statement = koneksi.createStatement();
@@ -208,7 +208,7 @@ public class PeminjamanViewFrame extends javax.swing.JFrame {
             while(resultSet.next()) {
                 row[0] = resultSet.getInt("PM.id");
                 row[1] = resultSet.getString("PM.tanggal_pinjam");
-                row[2] = resultSet.getString("PM.tanggal_kembali");
+                row[2] = resultSet.getString("PM.tenggat_pengembalian");
                 row[3] = resultSet.getString("PT.nama");
                 row[4] = resultSet.getString("A.nama");
                 model.addRow(row);
@@ -273,7 +273,7 @@ public class PeminjamanViewFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         try{
             Connection koneksi = Database.getConnection();
-            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tanggal_kembali, PT.nama, A.nama"
+            String selectSQL = "SELECT PM.id, PM.tanggal_pinjam, PM.tenggat_pengembalian, PT.nama, A.nama"
                                 + " FROM peminjaman PM LEFT JOIN petugas PT ON PM.petugas_id=PT.id"
                                 + " LEFT JOIN anggota A ON PM.anggota_id=A.id";
             Statement statement = koneksi.createStatement();
@@ -286,7 +286,7 @@ public class PeminjamanViewFrame extends javax.swing.JFrame {
             while(resultSet.next()) {
                 row[0] = resultSet.getInt("PM.id");
                 row[1] = resultSet.getString("PM.tanggal_pinjam");
-                row[2] = resultSet.getString("PM.tanggal_kembali");
+                row[2] = resultSet.getString("PM.tenggat_pengembalian");
                 row[3] = resultSet.getString("PT.nama");
                 row[4] = resultSet.getString("A.nama");
                 model.addRow(row);
