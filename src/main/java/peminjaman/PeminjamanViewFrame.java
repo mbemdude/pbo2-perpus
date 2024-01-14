@@ -279,7 +279,7 @@ public class PeminjamanViewFrame extends javax.swing.JFrame {
             Statement statement = koneksi.createStatement();
             ResultSet resultSet = statement.executeQuery(selectSQL);
             
-            Object[] row = new Object[8];
+            Object[] row = new Object[5];
             DefaultTableModel model = (DefaultTableModel) viewTable.getModel();
             model.setRowCount(0);
             
